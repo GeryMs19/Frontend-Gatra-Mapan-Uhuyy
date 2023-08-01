@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PRESENSI | Rekap Absen</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/dist/css/adminlte.min.css">
+</head>
+<style>
+    .form-input {
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        box-shadow: inset 0 0 0 transparent;
+    }
+</style>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="./dashboard.html" class="navbar-brand">
+            <img src="./assets/gatra-mapan-logo.png" class="w-50" alt="">
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #004CD0;">
+    <!-- Brand Logo -->
+    <a href="./dashboard.html" class="brand-link">
+      <img src="./assets/Logo-Gatra.png" alt="GatraMapan" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">PT. GATRA MAPAN</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="./dashboard.html" class="nav-link">
+              <i class="nav-icon fas fa-th-large"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-box-open"></i>
+              <p>
+                Master
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./status.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Status</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./jamkerja.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jam Kerja</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./divisi.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Divisi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./bagian.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bagian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./karyawan.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Karyawan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./hariraya.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hari Raya</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+                Proses Data
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./data-log.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Log</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./absensi.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Absensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./inputKarBulan.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Input Kary Bulanan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./inputKarHarian.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Input Kary Harian</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-sticky-note"></i>
+              <p>
+                Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-th-list nav-icon"></i>
+                  <p>Rekap Absen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./kartuabsensi.html" class="nav-link">
+                  <i class="far fa-id-card nav-icon"></i>
+                  <p>Kartu Absensi Karyawan</p>
+                </a>
+              </li>
+            </Ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tools"></i>
+              <p>
+                Utiliti
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./user.html" class="nav-link">
+                  <i class="far fa-user nav-icon"></i>
+                  <p>User</p>
+                </a>
+              </li>
+            </Ul>
+          </li>
+          <li class="nav-item">
+            <a href="./login.html" class="nav-link">
+              <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Laporan | Rekap Absen</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+                <!-- /.form group -->
+                <!-- /.card-header -->
+                
+                <div class="table-responsive card-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 form-group mr-2" style="background-color: #C6D8F4; border-radius: 10px;">
+                            <div class="input-group ml-3 col-form-label">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-input" id="reservation">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+                        <div class="col-lg-4 col-md-4 col-sm-12 form-group p-1 px-2 mr-2" style="background-color: #C6D8F4; border-radius: 10px;">
+                            <div class="input-group">
+                                <label class="col-form-label" for="nama">Nama :</label>
+                                <input type="text" class="form-input" placeholder="Ex: Andi">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+                        <div class="col-lg-3 col-md-4 col-sm-12 form-group p-1 px-2 mr-2" style="background-color: #C6D8F4; border-radius: 10px;">
+                            <div class="input-group">
+                                <label class="col-form-label" for="nama">Divisi :</label>
+                                <select name="divisi" class="form-control" id="divisi">
+                                    <option value="Semua">Semua</option>
+                                    <option value="HRD">HRD</option>
+                                    <option value="Produksi">Produksi</option>
+                                </select>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+                        <div class="col-lg-3 col-md-4 col-sm-12 form-group p-1 mr-2" style="background-color: #C6D8F4; border-radius: 10px;">
+                            <div class="input-group">
+                                <label class="col-form-label" for="bagian">Bagian :</label>
+                                <select name="bagian" class="form-control" id="bagian">
+                                    <option value="Semua">Semua</option>
+                                    <option value="HRD">HRD</option>
+                                    <option value="LAMINA">LAMINA</option>
+                                </select>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+                        <div class="col-lg-3 col-md-4 col-sm-12 form-group p-1 mr-2" style="background-color: #C6D8F4; border-radius: 10px;">
+                            <div class="input-group">
+                                <label class="col-form-label" for="gaji">Bank :</label>
+                                <select name="jenis" class="form-control" id="gaji">
+                                    <option value="Semua">Semua</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="MANDIRI">MANDIRI</option>
+                                    <option value="CASH">CASH</option>
+                                </select>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+                    </div>
+                    <div class="table-responsive">
+
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr style="background-color: #C6D8F4;">
+                            <th rowspan="3" class="px-2">No.</th>
+                            <th rowspan="3" class="text-center">PIN </th>
+                              <th rowspan="3" class="text-center">NIP</th>
+                              <th rowspan="3">Nama</th>
+                              <th class="text-center bg-secondary">Jul</th>
+                          </tr>
+                          <tr style="background-color: #C6D8F4;">
+                              <th class="text-center bg-gradient-cyan">Fri</th>
+                            </tr>
+                            <tr>
+                              <th class="text-center bg-gradient-cyan">21</th>
+                              <th class="text-center">'</th>
+                              <th class="text-center">'</th>
+                              <th class="text-center">'1/2</th>
+                              <th class="text-center">'A</th>
+                              <th class="text-center">'ADM</th>
+                            <th class="text-center">'AK</th>
+                            <th class="text-center">'CB</th>
+                            <th class="text-center">'CD</th>
+                            <th class="text-center">'CH</th>
+                            <th class="text-center">'CT</th>
+                            <th class="text-center">'DISP</th>
+                            <th class="text-center">'DNS</th>
+                            <th class="text-center">'FE</th>
+                            <th class="text-center">'FL</th>
+                            <th class="text-center">'I</th>
+                            <th class="text-center">'IB</th>
+                            <th class="text-center">'IM</th>
+                            <th class="text-center">'IPL</th>
+                            <th class="text-center">'IS</th>
+                            <th class="text-center">'IT</th>
+                            <th class="text-center">'KK</th>
+                            <th class="text-center">'LB</th>
+                            <th class="text-center">'LN</th>
+                            <th class="text-center">'OFF</th>
+                            <th class="text-center">'off</th>
+                            <th class="text-center">'PLC</th>
+                            <th class="text-center">'SD</th>
+                            <th class="text-center">'SF1</th>
+                            <th class="text-center">'SF2</th>
+                            <th class="text-center">'SHM</th>
+                            <th class="text-center">'SKR</th>
+                            <th class="text-center">'THK</th>
+                            <th class="text-center">'TL</th>
+                            <th class="text-center">'TM</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                          <td class="text-center">1</td>
+                          <td>7004/20</td>
+                          <td></td>
+                          <td>POR SIRI</td>
+                          <td></td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">2</td>
+                          <td>7007/20</td>
+                          <td></td>
+                          <td>SUHADAK</td>
+                          <td></td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">3</td>
+                          <td>7008/20</td>
+                          <td></td>
+                          <td>TOYAN</td>
+                          <td></td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">4</td>
+                          <td>7011/20</td>
+                          <td></td>
+                          <td>ROBIUL</td>
+                          <td></td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td class="text-center">5</td>
+                          <td>70015/20</td>
+                          <td></td>
+                          <td>SENAN</td>
+                          <td></td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="./AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="./AdminLTE-3.2.0/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/jszip/jszip.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- InputMask -->
+<script src="./AdminLTE-3.2.0/plugins/moment/moment.min.js"></script>
+<script src="./AdminLTE-3.2.0/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="./AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="./AdminLTE-3.2.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./AdminLTE-3.2.0/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    //Date range picker
+    $('#reservation').daterangepicker({
+        locale: {
+        format: 'DD-MM-YYYY'
+      }
+    })
+    
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font Ranga -->
+    <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
+    <!-- Font Times New Roman -->
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital@1&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>PRESENSI | Login</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sign-in {
+        background-color: #4154F1;
+        color: #FFF;
+    }
+    
+    .sign-in:hover {
+        background-color: #000;
+        color: #FFF;
+    }
+
+    .required-color {
+        color: #ff4747;
+    }
+    .error {
+        border-color: #ff4747;
+    }
+    .valid {
+        border-color: #37a137;
+    }
+    .hide {
+        display: none;
+    }
+    .field-icon {
+        float: right;
+        margin-left: -25px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 2;
+    }
+</style>
+<body style="background-color: #F0F4FB;">
+    <header>
+        <nav class="p-4" style="background: #FFF; box-shadow: 0px 2px 20px 0px rgba(1, 41, 112, 0.10);
+        ">
+        </nav>
+    </header>
+    <main>
+        <section class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+                <div class="d-flex flex-column text-center text-md-left col-md-8 col-lg-6 col-xl-5">
+                    <h1 style="font-size: 64px; font-family: 'Tinos', serif;">PT GATRA MAPAN</h1>
+                    <h2 style="font-size: 64px; font-family: 'Ranga', cursive; color:#4154F1;">World Wide</h2>
+                </div>
+                <div class="mx-sm-5 mx-0 col-md-8 col-lg-6 col-xl-4 bg-white rounded">
+                    <form action="./dashboard.html" class="p-3">
+                        <div class="form-group input-section username">
+                            <label for="username" class="font-weight-normal">Username<span class="required-color">*</span></label>
+                            <input type="text" class="username form-control" id="username-input" placeholder="Enter Username" required>
+                            <span id="username-error" class="hide required-color error-message">Invalid Input</span>
+                            <span id="empty-username" class="hide required-color error-message">This field is required</span>
+                        </div>
+                        <div class="form-group input-section password position-relative">
+                            <label for="password" class="font-weight-normal">Password<span class="required-color">*</span></label>
+                            <input type="password" class="password form-control" id="password" placeholder="Enter Password" required>
+                            <div toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password inline input"></div>
+                            <span id="password-error" class="hide required-color error-message"
+                            >Invalid Input</span>
+                            <span id="empty-password" class="hide required-color error-message"
+                            >Password required.</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-label" name="remember" id="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn sign-in">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+    <script>
+        // Eyeslash icon
+        const togglePassword = document.querySelector('.toggle-password');
+        const pass = document.querySelector('#password');
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+            pass.setAttribute('type', type);
+            // toggle the eye / eye slash icon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        //Name
+        let usernameInput = document.getElementById("username-input");
+        let usernameError = document.getElementById("username-error");
+        let emptyUsernameError = document.getElementById("empty-username");
+
+        //Password
+        let password = document.getElementById("password");
+        let passwordError = document.getElementById("password-error");
+        let emptypasswordError = document.getElementById("empty-password");
+
+        //Submit
+        let submitButton = document.getElementById("submit-button");
+
+        //Valid
+        let validClasses = document.getElementsByClassName("valid");
+        let invalidClasses = document.getElementsByClassName("error");
+
+        const passwordVerify = (password) => {
+        const regex = /^[A-Za-z0-9!@#$%^&*()\-_=+[{\]}\\|;:'",<.>/?`~\s]{2,}$/;
+        return regex.test(password);
+        };
+
+        //Text verification (if input contains only text)
+        const textVerify = (text) => {
+        const regex = /^[a-zA-Z]{3,}$/;
+        return regex.test(text);
+        };
+
+        //For empty input - accepts(input,empty error for that input and other errors)
+        const emptyUpdate = (
+        inputReference,
+        emptyErrorReference,
+        otherErrorReference
+        ) => {
+        if (!inputReference.value) {
+            //input is null/empty
+            emptyErrorReference.classList.remove("hide");
+            otherErrorReference.classList.add("hide");
+            inputReference.classList.add("error");
+        } else {
+            //input has some content
+            emptyErrorReference.classList.add("hide");
+        }
+        };
+
+        //For error styling and displaying error message
+        const errorUpdate = (inputReference, errorReference) => {
+        errorReference.classList.remove("hide");
+        inputReference.classList.remove("valid");
+        inputReference.classList.add("error");
+        };
+
+        //For no errors
+        const validInput = (inputReference) => {
+        inputReference.classList.remove("error");
+        inputReference.classList.add("valid");
+        };
+
+        //Name
+        usernameInput.addEventListener("input", () => {
+        if (textVerify(usernameInput.value)) {
+            //If verification returns true
+            usernameError.classList.add("hide");
+            validInput(usernameInput);
+        } else {
+            //for false
+            errorUpdate(usernameInput, usernameError);
+            //empty checker
+            emptyUpdate(usernameInput, emptyUsernameError, usernameError);
+        }
+        });
+
+        //Password
+        password.addEventListener("input", () => {
+        if (passwordVerify(password.value)) {
+            passwordError.classList.add("hide");
+            validInput(password);
+        } else {
+            errorUpdate(password, passwordError);
+            emptyUpdate(password, emptypasswordError, passwordError);
+        }
+        });
+    </script>
+</body>
+</html>
